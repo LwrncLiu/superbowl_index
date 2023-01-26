@@ -6,7 +6,7 @@ class World {
 
     }
 
-    async initialize() {
+    initialize() {
         // THREEJS INIT
         // scene 
         this.scene = new THREE.Scene()
@@ -27,30 +27,57 @@ class World {
         this.camera.position.z = 15
 
         // planes
-        this.loader = new THREE.TextureLoader()
-        this.texture = await this.load_image(this.loader)
-        this.texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy
-        this.geometry = new THREE.PlaneGeometry(16, 9)
-        this.material = new THREE.MeshBasicMaterial({ map: this.texture })
-        this.plane = new THREE.Mesh(this.geometry, this.material)
-
-        this.scene.add(this.plane)
+        this.spawn_planes()
 
         this.controls = new OrbitControls( this.camera, this.renderer.domElement )
         this.controls.update()
 
+        document.addEventListener('keydown', this.onArrowUpClick)
+
         this.animate()
-        
+    }
+    
+    async spawn_planes(){
+        // key an array of planes
+        this.planes = []
+
+        await this.spawn_plane()
+        console.log(this.planes[0])
     }
 
-    async load_image(loader) {
-        const texture = await loader.loadAsync( '../temp_img.jpg' )
+    async spawn_plane() {
+        const loader = new THREE.TextureLoader()
+        const texture = await this.load_image(loader, '../temp_img.jpg')
+        texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy
+        const geometry = new THREE.PlaneGeometry(16, 9)
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
+        const plane = new THREE.Mesh(geometry, material)
+
+        this.planes.push(plane)
+        this.scene.add(plane)
+    }
+
+    async load_image(loader, path) {
+        const texture = await loader.loadAsync( path )
         return texture
     }
 
     animate() {
         requestAnimationFrame(this.animate.bind(this))
         this.renderer.render(this.scene, this.camera)
+        this.onWindowResize()
+    }
+
+    onWindowResize() {
+        this.camera.aspect = innerWidth/innerHeight
+        this.camera.updateProjectionMatrix()
+        this.renderer.setSize(innerWidth, innerHeight)
+    }
+
+    onArrowUpClick(event) {
+        if (event.keyCode == 38) {
+            console.log('do something')
+        }
     }
 }
 
