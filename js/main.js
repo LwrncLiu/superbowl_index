@@ -3,10 +3,11 @@ import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/cont
 
 class World {
     constuctor () {
-
     }
 
     initialize() {
+        this.current_plane = 0
+        console.log(this.current_plane)
         // THREEJS INIT
         // scene 
         this.scene = new THREE.Scene()
@@ -76,9 +77,16 @@ class World {
 
     onArrowUpClick(event) {
         if (event.keyCode == 38) {
-            console.log('do something')
+            console.log('move all the planes down one')
+            console.log('make transparent')
+        }
+        if (event.keyCode == 40) {
+            console.log('move all the planes up one')
+            console.log('make untransparent')
         }
     }
+
+
 }
 
 let APP = null 
