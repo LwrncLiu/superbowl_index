@@ -6,8 +6,6 @@ class World {
     }
 
     initialize() {
-        this.current_plane = 0
-        console.log(this.current_plane)
         // THREEJS INIT
         // scene 
         this.scene = new THREE.Scene()
@@ -28,31 +26,35 @@ class World {
         this.camera.position.z = 15
 
         // planes
+        this.planes = []
+        this.plane_current_index = 0
         this.spawn_planes()
 
         this.controls = new OrbitControls( this.camera, this.renderer.domElement )
         this.controls.update()
 
-        document.addEventListener('keydown', this.onArrowUpClick)
+        document.addEventListener('keydown', this.onArrowUpClick.bind(this))
 
         this.animate()
     }
     
     async spawn_planes(){
-        // key an array of planes
-        this.planes = []
 
-        await this.spawn_plane()
-        console.log(this.planes[0])
+        for (let i = 0; i < 5; i ++) {
+            await this.spawn_plane(-5 * i)
+        }
+        
+        console.log(this.planes)
     }
 
-    async spawn_plane() {
+    async spawn_plane(loc) {
         const loader = new THREE.TextureLoader()
         const texture = await this.load_image(loader, '../temp_img.jpg')
         texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy
         const geometry = new THREE.PlaneGeometry(16, 9)
         const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
         const plane = new THREE.Mesh(geometry, material)
+        plane.position.z = loc
 
         this.planes.push(plane)
         this.scene.add(plane)
@@ -79,6 +81,10 @@ class World {
         if (event.keyCode == 38) {
             console.log('move all the planes down one')
             console.log('make transparent')
+            console.log(this.planes[this.plane_current_index])
+            this.current_plane = this.planes[this.plane_current_index]
+            this.current_plane.position.x = 10
+            
         }
         if (event.keyCode == 40) {
             console.log('move all the planes up one')
