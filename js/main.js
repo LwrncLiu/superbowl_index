@@ -23,7 +23,7 @@ class World {
         
         // camera
         this.camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 1000)
-        this.camera.position.z = 15
+        this.camera.position.z = 30
 
         // planes
         this.planes = []
@@ -33,28 +33,39 @@ class World {
         this.controls = new OrbitControls( this.camera, this.renderer.domElement )
         this.controls.update()
 
-        document.addEventListener('keydown', this.onArrowUpClick.bind(this))
+        document.addEventListener('keydown', this.onArrowClick.bind(this))
 
         this.animate()
     }
     
     async spawn_planes(){
 
-        for (let i = 0; i < 5; i ++) {
-            await this.spawn_plane(-5 * i)
+        for (let i = 0; i < 10; i ++) {
+            await this.spawn_plane(i)
         }
-        
-        console.log(this.planes)
     }
 
-    async spawn_plane(loc) {
+    async spawn_plane(i) {
         const loader = new THREE.TextureLoader()
         const texture = await this.load_image(loader, '../temp_img.jpg')
         texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy
         const geometry = new THREE.PlaneGeometry(16, 9)
         const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
         const plane = new THREE.Mesh(geometry, material)
-        plane.position.z = loc
+        
+        // position set 
+        plane.position.x = this.movePlaneX() * i
+        plane.position.y = this.movePlaneY() * i
+        plane.position.z = -this.movePlaneZ() * i
+
+        // rotation set
+        plane.rotation.x = -this.rotate10Degrees() * i
+        plane.rotation.y = this.rotate10Degrees() * i
+
+        if (i != this.plane_current_index) {
+            plane.material.transparent = true
+            plane.material.opacity = 0.3
+        }
 
         this.planes.push(plane)
         this.scene.add(plane)
@@ -77,19 +88,91 @@ class World {
         this.renderer.setSize(innerWidth, innerHeight)
     }
 
-    onArrowUpClick(event) {
-        if (event.keyCode == 38) {
-            console.log('move all the planes down one')
-            console.log('make transparent')
-            console.log(this.planes[this.plane_current_index])
-            this.current_plane = this.planes[this.plane_current_index]
-            this.current_plane.position.x = 10
-            
+    onArrowClick(event) {
+        console.log(event)
+        if (event.keyCode == 37 && this.plane_current_index < this.planes.length - 1) {
+            console.log('move planes left')
+                
+            this.plane_current_index += 1
+            for (let i = 0; i < this.planes.length; i ++) {
+                let plane = this.planes[i]
+                if (i == this.plane_current_index) {
+                    plane.material.transparent = false 
+                    plane.material.opacity = 1
+                } else {
+                    plane.material.transparent = true
+                    plane.material.opacity = 0.3
+                }
+
+                // position and rotation change
+                if (i < this.plane_current_index) {
+                    // position
+                    plane.position.x -= this.movePlaneX()
+                    plane.position.y += this.movePlaneY()
+                    plane.position.z -= this.movePlaneZ()
+                    // rotation
+                    plane.rotation.x -= this.rotate10Degrees()
+                    plane.rotation.y -= this.rotate10Degrees()
+                } else {
+                    plane.position.x -= this.movePlaneX()
+                    plane.position.y -= this.movePlaneY()
+                    plane.position.z += this.movePlaneZ()
+
+                    plane.rotation.x += this.rotate10Degrees()
+                    plane.rotation.y -= this.rotate10Degrees()
+                }
+                
+            }
         }
-        if (event.keyCode == 40) {
-            console.log('move all the planes up one')
-            console.log('make untransparent')
+        if (event.keyCode == 39 && this.plane_current_index > 0) {
+            console.log('move planes right')
+            this.plane_current_index -= 1
+
+            for (let i = 0; i < this.planes.length; i ++) {
+                let plane = this.planes[i]
+                if (i == this.plane_current_index) {
+                    plane.material.transparent = false 
+                    plane.material.opacity = 1
+                } else {
+                    plane.material.transparent = true
+                    plane.material.opacity = 0.3
+                }
+
+                // position and rotation change
+                if (i > this.plane_current_index) {
+                    plane.position.x += this.movePlaneX()
+                    plane.position.y += this.movePlaneY()
+                    plane.position.z -= this.movePlaneZ()
+
+                    plane.rotation.x -= this.rotate10Degrees()
+                    plane.rotation.y += this.rotate10Degrees()
+                } else {
+                    plane.position.x += this.movePlaneX()
+                    plane.position.y -= this.movePlaneY()
+                    plane.position.z += this.movePlaneZ()
+
+                    plane.rotation.x += this.rotate10Degrees()
+                    plane.rotation.y += this.rotate10Degrees()
+                }
+                
+            }
         }
+    }
+
+    rotate10Degrees() {
+        return Math.PI/18
+    }
+
+    movePlaneX() {
+        return 15
+    }
+
+    movePlaneY() {
+        return 5
+    }
+
+    movePlaneZ() {
+        return 8
     }
 
 
