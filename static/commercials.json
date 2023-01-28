@@ -39,6 +39,146 @@
         {
             "name": "Cue",
             "imageLoc": "cue_andy.jpg"
+        },
+        {
+            "name": "Cutwater",
+            "imageLoc": "cutwater_lazy.jpg"
+        },
+        {
+            "name": "Draftkings",
+            "imageLoc": "draftkings_fortune.jpg"
+        },
+        {
+            "name": "ETrade",
+            "imageLoc": "etrade_baby.jpg"
+        },
+        {
+            "name": "Expedia",
+            "imageLoc": "expedia_stuff.jpg"
+        },
+        {
+            "name": "Flamin",
+            "imageLoc": "flamin_sloth.jpg"
+        },
+        {
+            "name": "Gilette",
+            "imageLoc": "gilette_shave.jpg"
+        },
+        {
+            "name": "GM",
+            "imageLoc": "gm_evil.jpg"
+        },
+        {
+            "name": "GM Silverado",
+            "imageLoc": "gm_silverado.jpg"
+        },
+        {
+            "name": "Google",
+            "imageLoc": "google_pixel.jpg"
+        },
+        {
+            "name": "Hellmann",
+            "imageLoc": "hellmann_mayo.jpg"
+        },
+        {
+            "name": "Hologic",
+            "imageLoc": "hologic_health.jpg"
+        },
+        {
+            "name": "Intuit Quickbooks",
+            "imageLoc": "intuit_quickbooks.jpg"
+        },
+        {
+            "name": "Intuit Turbotax",
+            "imageLoc": "intuit_turbotax.jpg"
+        },
+        {
+            "name": "Irish Spring",
+            "imageLoc": "irish_spring.jpg"
+        },
+        {
+            "name": "Lays",
+            "imageLoc": "lays_golden.jpg"
+        },
+        {
+            "name": "Meta",
+            "imageLoc": "meta_new.jpg"
+        },
+        {
+            "name": "Michelob",
+            "imageLoc": "michelob_bowl.jpg"
+        },
+        {
+            "name": "Michelob",
+            "imageLoc": "michelob_caddy.jpg"
+        },
+        {
+            "name": "Planet Fitness",
+            "imageLoc": "planet_lindsay.jpg"
+        },
+        {
+            "name": "Polestar",
+            "imageLoc": "polestar_no.jpg"
+        },
+        {
+            "name": "Pringles",
+            "imageLoc": "pringles_stuck.jpg"
+        },
+        {
+            "name": "Rocket Mortgage",
+            "imageLoc": "rocket_barbie.jpg"
+        },
+        {
+            "name": "Salesforce",
+            "imageLoc": "salesforce_frontier.jpg"
+        },
+        {
+            "name": "Sam's Club",
+            "imageLoc": "sams_vip.jpg"
+        },
+        {
+            "name": "Squarespace",
+            "imageLoc": "square_shells.jpg"
+        },
+        {
+            "name": "Taco Bell",
+            "imageLoc": "taco_escape.jpg"
+        },
+        {
+            "name": "T-Mobile",
+            "imageLoc": "tmobile_dolly.jpg"
+        },
+        {
+            "name": "T-Mobile",
+            "imageLoc": "tmobile_miley.jpg"
+        },
+        {
+            "name": "T-Mobile",
+            "imageLoc": "tmobile_musical.jpg"
+        },
+        {
+            "name": "Toyota",
+            "imageLoc": "toyota_brothers.jpg"
+        },
+        {
+            "name": "Toyota",
+            "imageLoc": "toyota_joneses.jpg"
+        },
+        {
+            "name": "Uber Eats",
+            "imageLoc": "uber_eats.jpg"
+        },
+        {
+            "name": "Verizon",
+            "imageLoc": "verizon_5g.jpg"
+        },
+        {
+            "name": "Vroom",
+            "imageLoc": "vroom_musical.jpg"
+        },
+        {
+            "name": "Wallbox",
+            "imageLoc": "wallbox_seth.jpg"
         }
     ]
 }

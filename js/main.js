@@ -33,17 +33,18 @@ class World {
         this.commercials = await this.getCommercials()
         this.spawn_planes()
 
-        this.controls = new OrbitControls( this.camera, this.renderer.domElement )
-        this.controls.update()
+        // this.controls = new OrbitControls( this.camera, this.renderer.domElement )
+        // this.controls.update()
 
-        document.addEventListener('keydown', this.onArrowClick.bind(this))
-
+        document.getElementById('next').addEventListener("click", this.onClickNext.bind(this))
+        document.getElementById('previous').addEventListener("click", this.onClickPrevious.bind(this))
         this.animate()
     }
     
     async spawn_planes(){
 
-        for (let i = 0; i < 10; i ++) {
+        console.log(this.commercials.length)
+        for (let i = 0; i < this.commercials.length; i ++) {
             await this.spawn_plane(i)
         }
     }
@@ -111,7 +112,7 @@ class World {
         imageTexture.magFilter = THREE.LinearFilter;
         imageTexture.format = THREE.RGBAFormat;
         
-        const material = new THREE.MeshBasicMaterial( { map: imageTexture , side: THREE.DoubleSide, wireframe: false } );
+        const material = new THREE.MeshBasicMaterial( { map: imageTexture, wireframe: false } );
         
         const geometry = new THREE.BufferGeometry( );
         geometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array( positions ), 3 ) );
@@ -153,19 +154,20 @@ class World {
         this.renderer.setSize(innerWidth, innerHeight)
     }
 
-    onArrowClick(event) {
-        if (event.keyCode == 37 && this.plane_current_index < this.planes.length - 1) {
+    onClickNext(event) {
+        console.log('clicked')
+        if (this.plane_current_index < this.planes.length - 1) {
             this.plane_current_index += 1
             for (let i = 0; i < this.planes.length; i ++) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.5,
+                        duration: 0.15,
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 1,
+                        duration: 0.15,
                         opacity: 0.3
                     })
                 }
@@ -174,46 +176,49 @@ class World {
                 if (i < this.plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "-=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "-=0.175",
                         y: "-=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "-=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "+=0.175",
                         y: "-=0.175"
                     })
                 }
             }
         }
-        if (event.keyCode == 39 && this.plane_current_index > 0) {
+    }
+
+    onClickPrevious(event) {
+        if (this.plane_current_index > 0) {
             this.plane_current_index -= 1
             for (let i = this.planes.length - 1; i >=0; i --) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.5,
+                        duration: 0.15,
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 1,
+                        duration: 0.15,
                         opacity: 0.3
                     })
                 }
@@ -222,28 +227,28 @@ class World {
                 if (i > this.plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "+=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "-=0.175",
                         y: "+=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "+=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.5,
+                        duration: 0.15,
                         x: "+=0.175",
                         y: "+=0.175"
                     })
@@ -269,8 +274,6 @@ class World {
     movePlaneZ() {
         return 8
     }
-
-
 }
 
 let APP = null 
