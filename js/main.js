@@ -23,7 +23,7 @@ class World {
         
         // camera
         this.camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 1000)
-        this.camera.position.z = 30
+        this.camera.position.z = 15
 
         // planes
         this.planes = []
@@ -107,19 +107,32 @@ class World {
                 // position and rotation change
                 if (i < this.plane_current_index) {
                     // position
-                    plane.position.x -= this.movePlaneX()
-                    plane.position.y += this.movePlaneY()
-                    plane.position.z -= this.movePlaneZ()
+                    gsap.to(plane.position, {
+                        duration: 0.5,
+                        x: "-=10",
+                        y: "+=8",
+                        z: "-=8"
+                    })
                     // rotation
-                    plane.rotation.x -= this.rotate10Degrees()
-                    plane.rotation.y -= this.rotate10Degrees()
+                    gsap.to(plane.rotation, {
+                        duration: 0.5,
+                        x: "-=0.175",
+                        y: "-=0.175"
+                    })
                 } else {
-                    plane.position.x -= this.movePlaneX()
-                    plane.position.y -= this.movePlaneY()
-                    plane.position.z += this.movePlaneZ()
-
-                    plane.rotation.x += this.rotate10Degrees()
-                    plane.rotation.y -= this.rotate10Degrees()
+                    // position
+                    gsap.to(plane.position, {
+                        duration: 0.5,
+                        x: "-=10",
+                        y: "-=8",
+                        z: "+=8"
+                    })
+                    // rotation
+                    gsap.to(plane.rotation, {
+                        duration: 0.5,
+                        x: "+=0.175",
+                        y: "-=0.175"
+                    })
                 }
                 
             }
@@ -140,19 +153,33 @@ class World {
 
                 // position and rotation change
                 if (i > this.plane_current_index) {
-                    plane.position.x += this.movePlaneX()
-                    plane.position.y += this.movePlaneY()
-                    plane.position.z -= this.movePlaneZ()
-
-                    plane.rotation.x -= this.rotate10Degrees()
-                    plane.rotation.y += this.rotate10Degrees()
+                    // position
+                    gsap.to(plane.position, {
+                        duration: 0.5,
+                        x: "+=10",
+                        y: "+=8",
+                        z: "-=8"
+                    })
+                    // rotation
+                    gsap.to(plane.rotation, {
+                        duration: 0.5,
+                        x: "-=0.175",
+                        y: "+=0.175"
+                    })
                 } else {
-                    plane.position.x += this.movePlaneX()
-                    plane.position.y -= this.movePlaneY()
-                    plane.position.z += this.movePlaneZ()
-
-                    plane.rotation.x += this.rotate10Degrees()
-                    plane.rotation.y += this.rotate10Degrees()
+                    // position
+                    gsap.to(plane.position, {
+                        duration: 0.5,
+                        x: "+=10",
+                        y: "-=8",
+                        z: "+=8"
+                    })
+                    // rotation
+                    gsap.to(plane.rotation, {
+                        duration: 0.5,
+                        x: "+=0.175",
+                        y: "+=0.175"
+                    })
                 }
                 
             }
@@ -164,11 +191,11 @@ class World {
     }
 
     movePlaneX() {
-        return 15
+        return 10
     }
 
     movePlaneY() {
-        return 5
+        return 8
     }
 
     movePlaneZ() {
