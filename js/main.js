@@ -62,8 +62,8 @@ class World {
         plane.rotation.x = -this.rotate10Degrees() * i
         plane.rotation.y = this.rotate10Degrees() * i
 
+        plane.material.transparent = true
         if (i != this.plane_current_index) {
-            plane.material.transparent = true
             plane.material.opacity = 0.3
         }
 
@@ -89,10 +89,7 @@ class World {
     }
 
     onArrowClick(event) {
-        console.log(event)
         if (event.keyCode == 37 && this.plane_current_index < this.planes.length - 1) {
-            console.log('move planes left')
-                
             this.plane_current_index += 1
             for (let i = 0; i < this.planes.length; i ++) {
                 let plane = this.planes[i]
@@ -134,13 +131,10 @@ class World {
                         y: "-=0.175"
                     })
                 }
-                
             }
         }
         if (event.keyCode == 39 && this.plane_current_index > 0) {
-            console.log('move planes right')
             this.plane_current_index -= 1
-
             for (let i = 0; i < this.planes.length; i ++) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
@@ -181,7 +175,6 @@ class World {
                         y: "+=0.175"
                     })
                 }
-                
             }
         }
     }
