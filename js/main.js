@@ -16,11 +16,12 @@ class World {
             antialias: true, 
             canvas: document.querySelector('canvas')
         })
-        this.renderer.setPixelRatio( devicePixelRatio )
-        this.renderer.setSize( innerWidth, innerHeight )
-        
-        document.body.appendChild( this.renderer.domElement )
-        
+
+        this.canvasContainer = document.querySelector('#canvasContainer')
+        console.log(this.canvasContainer.offsetWidth, this.canvasContainer.offsetHeight)
+        this.renderer.setPixelRatio( this.canvasContainer.offsetWidth/this.canvasContainer.offsetHeight )
+        this.renderer.setSize( this.canvasContainer.offsetWidth, this.canvasContainer.offsetHeight )
+                
         // camera
         this.camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 1000)
         this.camera.position.z = 15
@@ -59,8 +60,8 @@ class World {
         plane.position.z = -this.movePlaneZ() * i
 
         // rotation set
-        plane.rotation.x = -this.rotate10Degrees() * i
-        plane.rotation.y = this.rotate10Degrees() * i
+        plane.rotation.x = -0.175 * i
+        plane.rotation.y = 0.175 * i
 
         plane.material.transparent = true
         if (i != this.plane_current_index) {
@@ -94,11 +95,15 @@ class World {
             for (let i = 0; i < this.planes.length; i ++) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
-                    plane.material.transparent = false 
-                    plane.material.opacity = 1
+                    gsap.to(plane.material, {
+                        duration: 0.5,
+                        opacity: 1
+                    })
                 } else {
-                    plane.material.transparent = true
-                    plane.material.opacity = 0.3
+                    gsap.to(plane.material, {
+                        duration: 0.5,
+                        opacity: 0.3
+                    })
                 }
 
                 // position and rotation change
@@ -138,11 +143,15 @@ class World {
             for (let i = 0; i < this.planes.length; i ++) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
-                    plane.material.transparent = false 
-                    plane.material.opacity = 1
+                    gsap.to(plane.material, {
+                        duration: 0.5,
+                        opacity: 1
+                    })
                 } else {
-                    plane.material.transparent = true
-                    plane.material.opacity = 0.3
+                    gsap.to(plane.material, {
+                        duration: 0.5,
+                        opacity: 0.3
+                    })
                 }
 
                 // position and rotation change
@@ -178,11 +187,6 @@ class World {
             }
         }
     }
-
-    rotate10Degrees() {
-        return Math.PI/18
-    }
-
     movePlaneX() {
         return 10
     }
