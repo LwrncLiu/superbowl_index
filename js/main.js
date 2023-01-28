@@ -18,12 +18,14 @@ class World {
         })
 
         this.canvasContainer = document.querySelector('#canvasContainer')
-        console.log(this.canvasContainer.offsetWidth, this.canvasContainer.offsetHeight)
-        this.renderer.setPixelRatio( this.canvasContainer.offsetWidth/this.canvasContainer.offsetHeight )
-        this.renderer.setSize( this.canvasContainer.offsetWidth, this.canvasContainer.offsetHeight )
+        this.canvasWidth = this.canvasContainer.offsetWidth
+        this.canvasHeight = this.canvasContainer.offsetHeight
+        console.log(this.canvasWidth, this.canvasHeight)
+        this.renderer.setPixelRatio( this.canvasWidth / this.canvasHeight )
+        this.renderer.setSize( this.canvasWidth, this.canvasHeight )
                 
         // camera
-        this.camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 1000)
+        this.camera = new THREE.PerspectiveCamera(70, this.canvasWidth / this.canvasHeight, 0.1, 1000)
         this.camera.position.z = 15
 
         // planes
@@ -47,16 +49,35 @@ class World {
     }
 
     async spawn_plane(i) {
+        let x = -8
+        let y = -4
+        let width = 16
+        let height = 9
+        let radius = 1
+
+        let shape = new THREE.Shape()
+        shape.moveTo(x, y + radius)
+        shape.lineTo(x, y + height - radius)
+        shape.quadraticCurveTo(x, y + height, x + radius, y + height)
+        shape.lineTo(x + width - radius, y + height)
+        shape.quadraticCurveTo(x + width, y + height, x + width, y + height - radius)
+        shape.lineTo(x + width, y + radius)
+        shape.quadraticCurveTo(x + width, y, x + width - radius, y)
+        shape.lineTo(x + radius, y)
+        shape.quadraticCurveTo(x, y, x, y + radius)
+
+        let geometry2 = new THREE.ShapeBufferGeometry( shape )
+
         const loader = new THREE.TextureLoader()
         const texture = await this.load_image(loader, '../temp_img.jpg')
         texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy
-        const geometry = new THREE.PlaneGeometry(16, 9)
+        // const geometry = new THREE.PlaneGeometry(16, 9)
         const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
-        const plane = new THREE.Mesh(geometry, material)
+        const plane = new THREE.Mesh(geometry2, material)
         
         // position set 
         plane.position.x = this.movePlaneX() * i
-        plane.position.y = this.movePlaneY() * i
+        plane.position.y = this.movePlaneY() * i + 4
         plane.position.z = -this.movePlaneZ() * i
 
         // rotation set
@@ -101,7 +122,7 @@ class World {
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.5,
+                        duration: 1,
                         opacity: 0.3
                     })
                 }
@@ -140,7 +161,7 @@ class World {
         }
         if (event.keyCode == 39 && this.plane_current_index > 0) {
             this.plane_current_index -= 1
-            for (let i = 0; i < this.planes.length; i ++) {
+            for (let i = this.planes.length - 1; i >=0; i --) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
@@ -149,7 +170,7 @@ class World {
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.5,
+                        duration: 1,
                         opacity: 0.3
                     })
                 }
