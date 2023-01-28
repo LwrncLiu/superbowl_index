@@ -5,7 +5,7 @@ class World {
     constuctor () {
     }
 
-    initialize() {
+    async initialize() {
         // THREEJS INIT
         // scene 
         this.scene = new THREE.Scene()
@@ -20,17 +20,17 @@ class World {
         this.canvasContainer = document.querySelector('#canvasContainer')
         this.canvasWidth = this.canvasContainer.offsetWidth
         this.canvasHeight = this.canvasContainer.offsetHeight
-        console.log(this.canvasWidth, this.canvasHeight)
         this.renderer.setPixelRatio( this.canvasWidth / this.canvasHeight )
         this.renderer.setSize( this.canvasWidth, this.canvasHeight )
                 
         // camera
         this.camera = new THREE.PerspectiveCamera(70, this.canvasWidth / this.canvasHeight, 0.1, 1000)
-        this.camera.position.z = 15
+        this.camera.position.z = 18
 
         // planes
         this.planes = []
         this.plane_current_index = 0
+        this.commercials = await this.getCommercials()
         this.spawn_planes()
 
         this.controls = new OrbitControls( this.camera, this.renderer.domElement )
@@ -49,31 +49,74 @@ class World {
     }
 
     async spawn_plane(i) {
-        let x = -8
-        let y = -4
-        let width = 16
-        let height = 9
-        let radius = 1
+        const w = 16	// width
+        const h = 9 	// height
+        const r = 1 	// radius corner
+        const s = 18	// smoothness
 
-        let shape = new THREE.Shape()
-        shape.moveTo(x, y + radius)
-        shape.lineTo(x, y + height - radius)
-        shape.quadraticCurveTo(x, y + height, x + radius, y + height)
-        shape.lineTo(x + width - radius, y + height)
-        shape.quadraticCurveTo(x + width, y + height, x + width, y + height - radius)
-        shape.lineTo(x + width, y + radius)
-        shape.quadraticCurveTo(x + width, y, x + width - radius, y)
-        shape.lineTo(x + radius, y)
-        shape.quadraticCurveTo(x, y, x, y + radius)
+        // helper const's
+        const wi = w / 2 - r
+        const hi = h / 2 - r
+        const w2 = w / 2
+        const h2 = h / 2
+        const ul = r / w
+        const ur = ( w - r ) / w
+        const vl = r / h
+        const vh = ( h - r ) / h
 
-        let geometry2 = new THREE.ShapeBufferGeometry( shape )
+        let positions = [
+            -wi, -h2, 0,  wi, -h2, 0,  wi, h2, 0,
+            -wi, -h2, 0,  wi,  h2, 0, -wi, h2, 0,	
+            -w2, -hi, 0, -wi, -hi, 0, -wi, hi, 0,
+            -w2, -hi, 0, -wi,  hi, 0, -w2, hi, 0,	
+            wi, -hi, 0,  w2, -hi, 0,  w2, hi, 0,
+            wi, -hi, 0,  w2,  hi, 0,  wi, hi, 0
+        ]
+
+        let uvs = [
+            ul,  0, ur,  0, ur,  1,
+            ul,  0, ur,  1, ul,  1,
+            0, vl, ul, vl, ul, vh,
+            0, vl, ul, vh,  0, vh,
+            ur, vl,  1, vl,  1, vh,
+            ur, vl,  1, vh,	ur, vh 
+        ]
+
+        
+        let phia = 0
+        let phib, xc, yc, uc, vc
+
+        for ( let i = 0; i < s * 4; i ++ ) {
+
+            phib = Math.PI * 2 * ( i + 1 ) / ( 4 * s )
+            
+            
+            xc = i < s || i >= 3 * s ? wi : - wi
+            yc = i < 2 * s ? hi : -hi
+
+            positions.push( xc, yc, 0, xc + r * Math.cos( phia ), yc + r * Math.sin( phia ), 0,  xc + r * Math.cos( phib ), yc + r * Math.sin( phib ), 0 )
+            
+            uc = xc = i < s || i >= 3 * s ? ur : ul
+            vc = i < 2 * s ? vh : vl
+            
+            uvs.push( uc, vc, uc + ul * Math.cos( phia ), vc + vl * Math.sin( phia ), uc + ul * Math.cos( phib ), vc + vl * Math.sin( phib ) )
+            
+            phia = phib
+                
+        }
 
         const loader = new THREE.TextureLoader()
-        const texture = await this.load_image(loader, '../temp_img.jpg')
-        texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy
-        // const geometry = new THREE.PlaneGeometry(16, 9)
-        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
-        const plane = new THREE.Mesh(geometry2, material)
+        const imageTexture = await this.load_image(loader, '../static/' + this.commercials[i].imageLoc)
+        imageTexture.minFilter = THREE.LinearFilter;
+        imageTexture.magFilter = THREE.LinearFilter;
+        imageTexture.format = THREE.RGBAFormat;
+        
+        const material = new THREE.MeshBasicMaterial( { map: imageTexture , side: THREE.DoubleSide, wireframe: false } );
+        
+        const geometry = new THREE.BufferGeometry( );
+        geometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array( positions ), 3 ) );
+        geometry.setAttribute( 'uv', new THREE.BufferAttribute( new Float32Array( uvs ), 2 ) );
+        const plane = new THREE.Mesh( geometry, material );
         
         // position set 
         plane.position.x = this.movePlaneX() * i
@@ -208,6 +251,13 @@ class World {
             }
         }
     }
+
+    async getCommercials() {
+        const response = await fetch('../static/commercials.json')
+        const data = await response.json()
+        return data.commercials
+    }
+
     movePlaneX() {
         return 10
     }

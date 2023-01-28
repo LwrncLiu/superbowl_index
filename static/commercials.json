@@ -1,0 +1,44 @@
+{
+    "commercials": [
+        {
+            "name": "Amazon Alexa",
+            "imageLoc": "amazon_alexa.jpg"
+        },
+        {
+            "name": "Amazon Prime",
+            "imageLoc": "amazon_prime.jpg"
+        },
+        {
+            "name": "Booking.com",
+            "imageLoc": "booking_yeah.jpg"
+        },
+        {
+            "name": "Budlight Flavor",
+            "imageLoc": "budlight_flavor.jpg"
+        },
+        {
+            "name": "Budlight Zero",
+            "imageLoc": "budlight_zero.jpg"
+        },
+        {
+            "name": "Budweiser",
+            "imageLoc": "budweiser_dog.jpg"
+        },
+        {
+            "name": "Caesar Sportsbook",
+            "imageLoc": "caesar_dinner.jpg"
+        },
+        {
+            "name": "Carvana",
+            "imageLoc": "carvana_mom.jpg"
+        },
+        {
+            "name": "Coinbase",
+            "imageLoc": "coinbase_qr.jpg"
+        },
+        {
+            "name": "Cue",
+            "imageLoc": "cue_andy.jpg"
+        }
+    ]
+}

@@ -6,16 +6,17 @@ body {
     display: flex;
 }
 
-canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
+.content {
+    width: 75%;
+}
+
+.content canvas {
+    width: 75vw;
+    height: 100vh;
+    display: inline;
 }
 
 .commentary {
     width: 25%;
 }
 
-.content {
-    width: 75%;
-}
