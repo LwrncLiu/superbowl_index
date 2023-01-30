@@ -32,6 +32,7 @@ class World {
         this.plane_current_index = 0
         this.commercials = await this.getCommercials()
         this.spawn_planes()
+        this.setText()
 
         // this.controls = new OrbitControls( this.camera, this.renderer.domElement )
         // this.controls.update()
@@ -158,16 +159,17 @@ class World {
         console.log('clicked')
         if (this.plane_current_index < this.planes.length - 1) {
             this.plane_current_index += 1
+            this.setText()
             for (let i = 0; i < this.planes.length; i ++) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.15,
+                        duration: 0.25,
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.15,
+                        duration: 0.25,
                         opacity: 0.3
                     })
                 }
@@ -176,28 +178,28 @@ class World {
                 if (i < this.plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "-=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "-=0.175",
                         y: "-=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "-=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "+=0.175",
                         y: "-=0.175"
                     })
@@ -209,16 +211,17 @@ class World {
     onClickPrevious(event) {
         if (this.plane_current_index > 0) {
             this.plane_current_index -= 1
+            this.setText()
             for (let i = this.planes.length - 1; i >=0; i --) {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.15,
+                        duration: 0.25,
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.15,
+                        duration: 0.25,
                         opacity: 0.3
                     })
                 }
@@ -227,28 +230,28 @@ class World {
                 if (i > this.plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "+=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "-=0.175",
                         y: "+=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "+=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.15,
+                        duration: 0.25,
                         x: "+=0.175",
                         y: "+=0.175"
                     })
@@ -261,6 +264,11 @@ class World {
         const response = await fetch('../static/commercials.json')
         const data = await response.json()
         return data.commercials
+    }
+
+    setText() {
+        document.querySelector("#commercialName").textContent = this.commercials[this.plane_current_index].commercialName
+        document.querySelector("#commentary").textContent = this.commercials[this.plane_current_index].commentary
     }
 
     movePlaneX() {
