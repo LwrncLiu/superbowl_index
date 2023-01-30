@@ -1,21 +1,30 @@
 body {
-    margin: 0px;
-    height: 100vh;
-    overscroll-behavior: none;
+  margin: 0px;
+  height: 100vh;
+  overscroll-behavior: none;
 }
 .page {
-    display: flex;
+  display: flex;
 }
 
 .navigation {
-    position: absolute;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.textContent {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 p {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
 }
   
 p:hover {

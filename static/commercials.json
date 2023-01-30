@@ -1,184 +1,319 @@
 {
     "commercials": [
         {
-            "name": "Amazon Alexa",
-            "imageLoc": "amazon_alexa.jpg"
+            "company": "Amazon",
+            "ticker": "$AMZN",
+            "commercialName": "Amazon Alexa - Mind Reader",
+            "imageLoc": "amazon_alexa.jpg",
+            "commentary": "Jarvis"
         },
         {
-            "name": "Amazon Prime",
-            "imageLoc": "amazon_prime.jpg"
+            "company": "Amazon",
+            "ticker": "$AMZN",
+            "commercialName": "Amazon Prime Video - TNF Football is Open",
+            "imageLoc": "amazon_prime.jpg",
+            "commentary": "The Colts at Broncos TNF game week 5 was unwatchable"
         },
         {
-            "name": "Booking.com",
-            "imageLoc": "booking_yeah.jpg"
+            "company": "Booking.com",
+            "ticker": "$BKNG",
+            "commercialName": "Booking.com - Booking.yeah",
+            "imageLoc": "booking_yeah.jpg",
+            "commentary": "Unfortunately Booking.yeah does not redirect you to Booking.com"
         },
         {
-            "name": "Budlight Flavor",
-            "imageLoc": "budlight_flavor.jpg"
+            "company": "Anheuser-Busch",
+            "ticker": "$BUD",
+            "commercialName": "Bud Light Next - Zero in the Way of Possibility",
+            "imageLoc": "budlight_zero.jpg",
+            "commentary": "Bud Light Next looks more like a seltzer can than a beer can"
         },
         {
-            "name": "Budlight Zero",
-            "imageLoc": "budlight_zero.jpg"
+            "company": "Anheuser-Busch",
+            "ticker": "$BUD",
+            "commercialName": "Bud Light Seltzer Hard Soda - Land of Loud Flavors",
+            "imageLoc": "budlight_flavor.jpg",
+            "commentary": "I saw a Guy Fieri restaurant at the Burbank airport, his nachos are apparently infamous"
         },
         {
-            "name": "Budweiser",
-            "imageLoc": "budweiser_dog.jpg"
+            "company": "Anheuser-Busch",
+            "ticker": "$BUD",
+            "commercialName": "Budweiser - A Clydesdale's Journey",
+            "imageLoc": "budweiser_dog.jpg",
+            "commentary": "Budweiser horse hooves are the size of dinner plates"
         },
         {
-            "name": "Caesar Sportsbook",
-            "imageLoc": "caesar_dinner.jpg"
+            "company": "Caesars Entertainment",
+            "ticker": "$CZR",
+            "commercialName": "Caesars Sportsbook - Sit Down Dinner",
+            "imageLoc": "caesar_dinner.jpg",
+            "commentary": "I lost $60 with my friend Jon playing $1 blackjack hands at Harrah's in New Orleans, a Caesars' establishment"
         },
         {
-            "name": "Carvana",
-            "imageLoc": "carvana_mom.jpg"
+            "company": "Carvana",
+            "ticker": "$CVNA",
+            "commercialName": "Carvana - We'll Drive You Happy",
+            "imageLoc": "carvana_mom.jpg",
+            "commentary": "I wouldn't buy chips for $3 from a vending machine much less a $40k car from a vending machine"
         },
         {
-            "name": "Coinbase",
-            "imageLoc": "coinbase_qr.jpg"
+            "company": "Coinbase",
+            "ticker": "$COIN",
+            "commercialName": "Coinbase - WAGMI",
+            "imageLoc": "coinbase_qr.jpg",
+            "commentary": "You say WAGMI, I say Wagamama"
         },
         {
-            "name": "Cue",
-            "imageLoc": "cue_andy.jpg"
+            "company": "Cue Health",
+            "ticker": "$HLTH",
+            "commercialName": "Cue Health - Andy",
+            "imageLoc": "cue_andy.jpg",
+            "commentary": "My mind went to Theranos"
         },
         {
-            "name": "Cutwater",
-            "imageLoc": "cutwater_lazy.jpg"
+            "company": "Anheuser-Busch",
+            "ticker": "$BUD",
+            "commercialName": "Cutwater - Here's to the Lazy Ones",
+            "imageLoc": "cutwater_lazy.jpg",
+            "commentary": "Third commercial for Anheuser-Busch, football fans must like beer"
         },
         {
-            "name": "Draftkings",
-            "imageLoc": "draftkings_fortune.jpg"
+            "company": "DraftKings",
+            "ticker": "$DKNG",
+            "commercialName": "DraftKings - Fortune: Life's a Gamble",
+            "imageLoc": "draftkings_fortune.jpg",
+            "commentary": "I bet the over in Bills at Chiefs week 6 on DraftKings and lost"
         },
         {
-            "name": "ETrade",
-            "imageLoc": "etrade_baby.jpg"
+            "company": "Morgan Stanley",
+            "ticker": "$MS",
+            "commercialName": "E-Trade - Off the Grid",
+            "imageLoc": "etrade_baby.jpg",
+            "commentary": "Looks like Brad Leonoe from Bon Appetit as a baby"
         },
         {
-            "name": "Expedia",
-            "imageLoc": "expedia_stuff.jpg"
+            "company": "Expedia",
+            "ticker": "$EXPE",
+            "commercialName": "Expedia - Stuff",
+            "imageLoc": "expedia_stuff.jpg",
+            "commentary": "Guess it's time to sell all my stuff"
         },
         {
-            "name": "Flamin",
-            "imageLoc": "flamin_sloth.jpg"
+            "company": "PepsiCo",
+            "ticker": "$PEP",
+            "commercialName": "Frito-Lay Flamin' Hot Cheetos and Doritos - Unleash Your Flamin' Hot",
+            "imageLoc": "flamin_sloth.jpg",
+            "commentary": "Kroger's once had a buy 3 get 2 free deal for Flamin' Hot Cheetos; I had a five page paper due and rewarded myself with a bag for every page written"
         },
         {
-            "name": "Gilette",
-            "imageLoc": "gilette_shave.jpg"
+            "company": "General Motors Company",
+            "ticker": "$GM",
+            "commercialName": "General Motors - Dr. EV-il",
+            "imageLoc": "gm_evil.jpg",
+            "commentary": "This movie came out before I was born"
         },
         {
-            "name": "GM",
-            "imageLoc": "gm_evil.jpg"
+            "company": "General Motors Company",
+            "ticker": "$GM",
+            "commercialName": "General Motors - Silverado EV New Generation",
+            "imageLoc": "gm_silverado.jpg",
+            "commentary": "Hawaii Five-0 made driving a chevy look cool"
         },
         {
-            "name": "GM Silverado",
-            "imageLoc": "gm_silverado.jpg"
+            "company": "Procter & Gamble",
+            "ticker": "$PG",
+            "commercialName": "Gilette Labs - A Quick & Easy Shave",
+            "imageLoc": "gilette_shave.jpg",
+            "commentary": "They sent me a free razor on my 18th birthday; Unbeknownst to them, I wouldn't begin growing facial hair until I turned 23"
         },
         {
-            "name": "Google",
-            "imageLoc": "google_pixel.jpg"
+            "company": "Alphabet",
+            "ticker": "$GOOGL",
+            "commercialName": "Google Pixel - Seen on Pixel",
+            "imageLoc": "google_pixel.jpg",
+            "commentary": "Photo color equality, very cool"
         },
         {
-            "name": "Hellmann",
-            "imageLoc": "hellmann_mayo.jpg"
+            "company": "Unilever",
+            "ticker": "$UL",
+            "commercialName": "Hellmann's - Mayo Tackles Food Waste",
+            "imageLoc": "hellmann_mayo.jpg",
+            "commentary": "People do like their Mayo"
         },
         {
-            "name": "Hologic",
-            "imageLoc": "hologic_health.jpg"
+            "company": "Hologic",
+            "ticker": "$HOLX",
+            "commercialName": "Hologic - Her Health is Her Wealth",
+            "imageLoc": "hologic_health.jpg",
+            "commentary": "First to admit I'm uncultured; did not know who Mary J. Blige was until... this project"
         },
         {
-            "name": "Intuit Quickbooks",
-            "imageLoc": "intuit_quickbooks.jpg"
+            "company": "Intuit",
+            "ticker": "$INTU",
+            "commercialName": "Intuit, Quickbooks - Early Start",
+            "imageLoc": "intuit_quickbooks.jpg",
+            "commentary": "The internet runs on cats"
         },
         {
-            "name": "Intuit Turbotax",
-            "imageLoc": "intuit_turbotax.jpg"
+            "company": "Intuit",
+            "ticker": "$INTU",
+            "commercialName": "Intuit, TurboTax - Matchmaker",
+            "imageLoc": "intuit_turbotax.jpg",
+            "commentary": "Do people actually use matchmakers?"
         },
         {
-            "name": "Irish Spring",
-            "imageLoc": "irish_spring.jpg"
+            "company": "Colgate-Palmolive",
+            "ticker": "$CL",
+            "commercialName": "Irish Spring - Welcome to Irish Spring",
+            "imageLoc": "irish_spring.jpg",
+            "commentary": "Their packaging can be mistaken for both tea bags and dish soap"
         },
         {
-            "name": "Lays",
-            "imageLoc": "lays_golden.jpg"
+            "company": "PepsiCo",
+            "ticker": "$PEP",
+            "commercialName": "Lay's - Stay Golden",
+            "imageLoc": "lays_golden.jpg",
+            "commentary": "Find you someone that looks at you like Paul Rudd looks at Seth Rogen"
         },
         {
-            "name": "Meta",
-            "imageLoc": "meta_new.jpg"
+            "company": "Meta",
+            "ticker": "$META",
+            "commercialName": "Meta - Old Friends, New Fun",
+            "imageLoc": "meta_new.jpg",
+            "commentary": "Ready Player One was a great read, the movie did not live up to expectations"
         },
         {
-            "name": "Michelob",
-            "imageLoc": "michelob_bowl.jpg"
+            "company": "Anheuser-Busch",
+            "ticker": "$BUD",
+            "commercialName": "Michelob Ultra - Superior Bowl",
+            "imageLoc": "michelob_bowl.jpg",
+            "commentary": "Jimmy Butler's hair before the 2022 season was outrageous"
         },
         {
-            "name": "Michelob",
-            "imageLoc": "michelob_caddy.jpg"
+            "company": "Anheuser-Busch",
+            "ticker": "$BUD",
+            "commercialName": "Michelob Ultra Organic Seltzer",
+            "imageLoc": "michelob_caddy.jpg",
+            "commentary": "So this is also a commercial for Nike?"
         },
         {
-            "name": "Planet Fitness",
-            "imageLoc": "planet_lindsay.jpg"
+            "company": "Planet Fitness",
+            "ticker": "$PLNT",
+            "commercialName": "Planet Fitness - What's gotten into Lindsay?",
+            "imageLoc": "planet_lindsay.jpg",
+            "commentary": "Apparently you lose your Planet Fitness membership if you drop a pen in the weight room"
         },
         {
-            "name": "Polestar",
-            "imageLoc": "polestar_no.jpg"
+            "company": "Polestar",
+            "ticker": "$PSNYW",
+            "commercialName": "Polestar - No Compromises",
+            "imageLoc": "polestar_no.jpg",
+            "commentary": "I once went to a Polestar event hosted at Classic Car Club Manhattan, only had one shrimp hor d'oeuvre"
         },
         {
-            "name": "Pringles",
-            "imageLoc": "pringles_stuck.jpg"
+            "company": "Kellogg's",
+            "ticker": "$K",
+            "commercialName": "Pringles - Pringles Stuck In",
+            "imageLoc": "pringles_stuck.jpg",
+            "commentary": "Bo Burnham made a song about this"
         },
         {
-            "name": "Rocket Mortgage",
-            "imageLoc": "rocket_barbie.jpg"
+            "company": "Rocket Companies",
+            "ticker": "$RKT",
+            "commercialName": "Rocket Mortgage - Dream House",
+            "imageLoc": "rocket_barbie.jpg",
+            "commentary": "The barbie playing demographic intersects perfectly with the home buying demographic, yes"
         },
         {
-            "name": "Salesforce",
-            "imageLoc": "salesforce_frontier.jpg"
+            "company": "Salesforce",
+            "ticker": "$CRM",
+            "commercialName": "Salesforce - New Frontier",
+            "imageLoc": "salesforce_frontier.jpg",
+            "commentary": "Someone wise once said hot air balloon pilots are synonymous with elevator operators; their words not mine "
         },
         {
-            "name": "Sam's Club",
-            "imageLoc": "sams_vip.jpg"
+            "company": "Walmart",
+            "ticker": "$WMT",
+            "commercialName": "Sam's Club - Like a VIP",
+            "imageLoc": "sams_vip.jpg",
+            "commentary": "Sam's Club saying their hot dogs are better than Costco's hot dogs, those are fighting words"
         },
         {
-            "name": "Squarespace",
-            "imageLoc": "square_shells.jpg"
+            "company": "Squarespace",
+            "ticker": "$SQSP",
+            "commercialName": "Squarespace - Everything to Shell Anything",
+            "imageLoc": "square_shells.jpg",
+            "commentary": "Squarespace is not Square, but regardless, Square has singlehandidly changed the society where it is now culturally expected to tip for takeout"
         },
         {
-            "name": "Taco Bell",
-            "imageLoc": "taco_escape.jpg"
+            "company": "Yum! Brands",
+            "ticker": "$YUM",
+            "commercialName": "Taco Bell - The Grande Escape",
+            "imageLoc": "taco_escape.jpg",
+            "commentary": "Here are two fun facts finance people always like to say about Taco Bell. Yum! Brands is its parent company and KFC, also owned by Yum!, goes by its acronym because they can't legally call their food chicken"
         },
         {
-            "name": "T-Mobile",
-            "imageLoc": "tmobile_dolly.jpg"
+            "company": "T-Mobile US",
+            "ticker": "$TMUS",
+            "commercialName": "T-Mobile - Miley Cyrus Sings a Song for 5G Phones",
+            "imageLoc": "tmobile_miley.jpg",
+            "commentary": "Her new song Flowers is pretty good"
         },
         {
-            "name": "T-Mobile",
-            "imageLoc": "tmobile_miley.jpg"
+            "company": "T-Mobile US",
+            "ticker": "$TMUS",
+            "commercialName": "T-Mobile - Dolly Parton and Miley Cyrus Help 5G Phones' Dreams Come True",
+            "imageLoc": "tmobile_dolly.jpg",
+            "commentary": "That looks like a Samsung A53 5G"
         },
         {
-            "name": "T-Mobile",
-            "imageLoc": "tmobile_musical.jpg"
+            "company": "T-Mobile US",
+            "ticker": "$TMUS",
+            "commercialName": "T-Mobile - Zach Braff and Donald Fiason Sing a Duet for Home Internet",
+            "imageLoc": "tmobile_musical.jpg",
+            "commentary": "T-Mobile is getting really creative with their commercial names aren't they?"
         },
         {
-            "name": "Toyota",
-            "imageLoc": "toyota_brothers.jpg"
+            "company": "Toyota Motor Corp",
+            "ticker": "$TM",
+            "commercialName": "Toyota - Brothers",
+            "imageLoc": "toyota_brothers.jpg",
+            "commentary": "Great story"
         },
         {
-            "name": "Toyota",
-            "imageLoc": "toyota_joneses.jpg"
+            "company": "Toyota Motor Corp",
+            "ticker": "$TM",
+            "commercialName": "Toyota - The Joneses",
+            "imageLoc": "toyota_joneses.jpg",
+            "commentary": "Leslie Jones looks like she could beat me up, though that's not saying much"
         },
         {
-            "name": "Uber Eats",
-            "imageLoc": "uber_eats.jpg"
+            "company": "Uber Technologies",
+            "ticker": "$UBER",
+            "commercialName": "Uber Eats - Uber Don't Eats",
+            "imageLoc": "uber_eats.jpg",
+            "commentary": "Greg the egg! I'm going to rewatch Succession seasons 1-3 once season 4 comes out"
         },
         {
-            "name": "Verizon",
-            "imageLoc": "verizon_5g.jpg"
+            "company": "Verizon Communications",
+            "ticker": "$VZ",
+            "commercialName": "Verizon - Goodbye, cable",
+            "imageLoc": "verizon_5g.jpg",
+            "commentary": "Jim Carrey was once birthed by a Rhinoceros"
         },
         {
-            "name": "Vroom",
-            "imageLoc": "vroom_musical.jpg"
+            "company": "Vroom",
+            "ticker": "$VRM",
+            "commercialName": "Vroom - Flake the Musical",
+            "imageLoc": "vroom_musical.jpg",
+            "commentary": "I know someone who flakes like its second nature; you know who you are"
         },
         {
-            "name": "Wallbox",
-            "imageLoc": "wallbox_seth.jpg"
+            "company": "Wallbox",
+            "ticker": "$WBX",
+            "commercialName": "Wallbox - Can #Supercharged Seth embrace electricity again?",
+            "imageLoc": "wallbox_seth.jpg",
+            "commentary": "Chuck McGill vibes"
         }
     ]
 }
