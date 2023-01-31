@@ -9,17 +9,18 @@ class World {
         // THREEJS INIT
         // scene 
         this.scene = new THREE.Scene()
-        this.scene.background = new THREE.Color(0x6e9b8e)
+        // this.scene.background = new THREE.Color(0x6e9b8e)
 
         // render
         this.renderer = new THREE.WebGLRenderer( {
             antialias: true, 
-            canvas: document.querySelector('canvas')
+            canvas: document.querySelector('canvas'),
+            alpha: true 
         })
 
         // camera
         this.camera = new THREE.PerspectiveCamera(70, 2, 0.1, 1000)
-        this.camera.position.z = 15
+        this.camera.position.z = 12
 
         // planes
         this.planes = []

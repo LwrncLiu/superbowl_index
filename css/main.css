@@ -2,7 +2,7 @@ body {
   margin: 0px;
   height: 100vh;
   overscroll-behavior: none;
-  background-color: black;
+  background-color: white;
 }
 .page {
   /* display: inline-block; */
@@ -12,16 +12,16 @@ body {
   width: 100vw;
   height: 60vh;
 }
-.navigation {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .textContent {
-  position: absolute;
-  top: 65%;
+  left: 50%;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.navigation {
+  position: fixed;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 }
