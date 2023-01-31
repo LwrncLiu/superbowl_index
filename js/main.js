@@ -17,15 +17,9 @@ class World {
             canvas: document.querySelector('canvas')
         })
 
-        this.canvasContainer = document.querySelector('#canvasContainer')
-        this.canvasWidth = this.canvasContainer.offsetWidth
-        this.canvasHeight = this.canvasContainer.offsetHeight
-        this.renderer.setPixelRatio( this.canvasWidth / this.canvasHeight )
-        this.renderer.setSize( this.canvasWidth, this.canvasHeight )
-                
         // camera
-        this.camera = new THREE.PerspectiveCamera(70, this.canvasWidth / this.canvasHeight, 0.1, 1000)
-        this.camera.position.z = 18
+        this.camera = new THREE.PerspectiveCamera(70, 2, 0.1, 1000)
+        this.camera.position.z = 15
 
         // planes
         this.planes = []
@@ -122,7 +116,7 @@ class World {
         
         // position set 
         plane.position.x = this.movePlaneX() * i
-        plane.position.y = this.movePlaneY() * i + 4
+        plane.position.y = this.movePlaneY() * i
         plane.position.z = -this.movePlaneZ() * i
 
         // rotation set
@@ -144,15 +138,25 @@ class World {
     }
 
     animate() {
+        this.resizeCanvasToDisplaySize()
         requestAnimationFrame(this.animate.bind(this))
         this.renderer.render(this.scene, this.camera)
-        this.onWindowResize()
+        // this.onWindowResize()
     }
 
-    onWindowResize() {
-        this.camera.aspect = innerWidth/innerHeight
-        this.camera.updateProjectionMatrix()
-        this.renderer.setSize(innerWidth, innerHeight)
+    resizeCanvasToDisplaySize() {
+        const canvasContainer = document.querySelector('.canvasContainer')
+        const canvasWidth = canvasContainer.offsetWidth
+        const canvasHeight = canvasContainer.offsetHeight
+        const canvas = this.renderer.domElement
+        const width = canvas.clientWidth
+        const height = canvas.clientHeight
+
+        if (canvas.width !== canvasWidth || canvas.height !== canvasHeight) {
+            this.renderer.setSize(canvasWidth, canvasHeight, false)
+            this.camera.aspect = canvasWidth / canvasHeight
+            this.camera.updateProjectionMatrix()
+        }
     }
 
     onClickNext(event) {

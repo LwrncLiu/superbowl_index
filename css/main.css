@@ -2,11 +2,16 @@ body {
   margin: 0px;
   height: 100vh;
   overscroll-behavior: none;
+  background-color: black;
 }
 .page {
-  display: flex;
+  /* display: inline-block; */
 }
 
+.canvasContainer {
+  width: 100vw;
+  height: 60vh;
+}
 .navigation {
   position: absolute;
   bottom: 2rem;
