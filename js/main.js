@@ -116,13 +116,13 @@ class World {
         const plane = new THREE.Mesh( geometry, material );
         
         // position set 
-        plane.position.x = this.movePlaneX() * i
+        plane.position.x = -this.movePlaneX() * i
         plane.position.y = this.movePlaneY() * i
         plane.position.z = -this.movePlaneZ() * i
 
         // rotation set
         plane.rotation.x = -0.175 * i
-        plane.rotation.y = 0.175 * i
+        plane.rotation.y = -0.175 * i
 
         plane.material.transparent = true
         if (i != this.plane_current_index) {
@@ -184,7 +184,7 @@ class World {
                     // position
                     gsap.to(plane.position, {
                         duration: 0.25,
-                        x: "-=10",
+                        x: "=10",
                         y: "+=8",
                         z: "-=8"
                     })
@@ -198,7 +198,7 @@ class World {
                     // position
                     gsap.to(plane.position, {
                         duration: 0.25,
-                        x: "-=10",
+                        x: "=10",
                         y: "-=8",
                         z: "+=8"
                     })
