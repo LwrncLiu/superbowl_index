@@ -40,7 +40,7 @@ class World {
     async spawn_planes(){
 
         console.log(this.commercials.length)
-        for (let i = 0; i < this.commercials.length; i ++) {
+        for (let i = 0; i < 7; i ++) {
             await this.spawn_plane(i)
         }
     }
@@ -117,7 +117,7 @@ class World {
         
         // position set 
         plane.position.x = -this.movePlaneX() * i
-        plane.position.y = this.movePlaneY() * i
+        plane.position.y = this.movePlaneY() * i - 2
         plane.position.z = -this.movePlaneZ() * i
 
         // rotation set
@@ -165,16 +165,16 @@ class World {
         if (this.plane_current_index < this.planes.length - 1) {
             this.plane_current_index += 1
             this.setText()
-            for (let i = 0; i < this.planes.length; i ++) {
+            for (let i = this.planes.length - 1; i >=0; i --)  {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.25,
+                        duration: 0.3,
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.25,
+                        duration: 0.3,
                         opacity: 0.3
                     })
                 }
@@ -183,28 +183,28 @@ class World {
                 if (i < this.plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "+=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "-=0.175",
                         y: "+=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "+=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "+=0.175",
                         y: "+=0.175"
                     })
@@ -221,12 +221,12 @@ class World {
                 let plane = this.planes[i]
                 if (i == this.plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.25,
+                        duration: 0.3,
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.25,
+                        duration: 0.3,
                         opacity: 0.3
                     })
                 }
@@ -235,28 +235,28 @@ class World {
                 if (i > this.plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "-=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "-=0.175",
                         y: "-=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "-=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.25,
+                        duration: 0.3,
                         x: "+=0.175",
                         y: "-=0.175"
                     })
@@ -272,8 +272,11 @@ class World {
     }
 
     setText() {
-        document.querySelector("#commercialName").textContent = this.commercials[this.plane_current_index].commercialName
-        document.querySelector("#commentary").textContent = this.commercials[this.plane_current_index].commentary
+        const currentCommercial = this.commercials[this.plane_current_index]
+
+        document.querySelector("#commercialName").textContent = currentCommercial.commercialName
+        document.querySelector('#oneYearReturn').textContent = currentCommercial.ticker+ ': ' + currentCommercial.oneYearReturn
+        document.querySelector("#commentary").textContent = currentCommercial.commentary 
     }
 
     movePlaneX() {
