@@ -25,8 +25,10 @@ class World {
         // planes
         this.planes = []
         this.plane_current_index = 0
+        this.plane_min_index = 0
+        this.plane_max_index = 4
         this.commercials = await this.getCommercials()
-        this.spawn_planes()
+        this.spawnInitialPlanes()
         this.setText()
 
         // this.controls = new OrbitControls( this.camera, this.renderer.domElement )
@@ -37,12 +39,52 @@ class World {
         this.animate()
     }
     
-    async spawn_planes(){
+    async spawnInitialPlanes(){
 
-        console.log(this.commercials.length)
-        for (let i = 0; i < 7; i ++) {
+        // load initial seven planes
+        for (let i = 0; i < 4; i ++) {
             await this.spawn_plane(i)
         }
+    }
+
+    async updateRenderedPlanes() {
+        console.log('current_plane', this.plane_current_index)
+        console.log('min_index', this.plane_min_index)
+        console.log('max_index', this.plane_max_index)
+        
+        // spawn plane on right side of when clicking next
+        if (this.plane_current_index + 3 == this.plane_max_index) {
+            console.log('adding')
+            
+            await this.spawn_plane(this.plane_max_index)
+            
+            const renderedPlane = this.scene.getObjectByName(this.plane_max_index)
+            
+            // position set
+            renderedPlane.position.x += this.movePlaneX() * (this.plane_max_index - 3)
+            renderedPlane.position.y -= this.movePlaneY() * (this.plane_max_index - 3)
+            renderedPlane.position.z += this.movePlaneZ() * (this.plane_max_index - 3)
+
+            // rotation set
+            renderedPlane.rotation.x += 0.175 * (this.plane_max_index - 3)
+            renderedPlane.rotation.y += 0.175 * (this.plane_max_index - 3)
+
+            this.plane_max_index += 1
+        }
+
+        // remove plane of left side of array when clicking next
+        if (this.plane_current_index - 3 > this.plane_min_index) {
+            console.log('removing')
+            const removedPlane = this.scene.getObjectByName(this.plane_min_index)
+            
+            // remove plane from scene and array
+            this.scene.remove(removedPlane)
+            this.planes.shift()
+            console.log(this.planes)
+
+            this.plane_min_index += 1
+        }
+        
     }
 
     async spawn_plane(i) {
@@ -129,6 +171,10 @@ class World {
             plane.material.opacity = 0.3
         }
 
+        // set plane's name to index so that it can be referenced later to be removed
+        plane.name = i
+
+        // add plane to scene and array
         this.planes.push(plane)
         this.scene.add(plane)
     }
@@ -161,55 +207,65 @@ class World {
     }
 
     onClickNext(event) {
-        console.log('clicked')
-        if (this.plane_current_index < this.planes.length - 1) {
+        if (this.plane_current_index - this.plane_min_index < this.planes.length - 1) {
+            console.log('testing')
             this.plane_current_index += 1
             this.setText()
+            console.log(this.planes)
             for (let i = this.planes.length - 1; i >=0; i --)  {
                 let plane = this.planes[i]
-                if (i == this.plane_current_index) {
+                const adj_plane_current_index = this.plane_current_index - this.plane_min_index
+
+                if (i == adj_plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "power4.in",
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "power4.in",
                         opacity: 0.3
                     })
                 }
 
                 // position and rotation change
-                if (i < this.plane_current_index) {
+                if (i < adj_plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "+=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "-=0.175",
                         y: "+=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "+=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "+=0.175",
                         y: "+=0.175"
                     })
                 }
             }
+            this.updateRenderedPlanes()
         }
     }
 
