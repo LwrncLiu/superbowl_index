@@ -41,20 +41,17 @@ class World {
     
     async spawnInitialPlanes(){
 
-        // load initial seven planes
+        // load initial four planes
         for (let i = 0; i < 4; i ++) {
             await this.spawn_plane(i)
         }
     }
 
+    // load more planes as people click through the next button
     async updateRenderedPlanes() {
-        console.log('current_plane', this.plane_current_index)
-        console.log('min_index', this.plane_min_index)
-        console.log('max_index', this.plane_max_index)
         
-        // spawn plane on right side of when clicking next
-        if (this.plane_current_index + 3 == this.plane_max_index) {
-            console.log('adding')
+        // spawn plane on left side when clicking next
+        if ((this.plane_current_index + 3 == this.plane_max_index) && (this.plane_current_index + 3 < this.commercials.length)) {
             
             await this.spawn_plane(this.plane_max_index)
             
@@ -71,20 +68,6 @@ class World {
 
             this.plane_max_index += 1
         }
-
-        // remove plane of left side of array when clicking next
-        if (this.plane_current_index - 3 > this.plane_min_index) {
-            console.log('removing')
-            const removedPlane = this.scene.getObjectByName(this.plane_min_index)
-            
-            // remove plane from scene and array
-            this.scene.remove(removedPlane)
-            this.planes.shift()
-            console.log(this.planes)
-
-            this.plane_min_index += 1
-        }
-        
     }
 
     async spawn_plane(i) {
@@ -208,10 +191,8 @@ class World {
 
     onClickNext(event) {
         if (this.plane_current_index - this.plane_min_index < this.planes.length - 1) {
-            console.log('testing')
             this.plane_current_index += 1
             this.setText()
-            console.log(this.planes)
             for (let i = this.planes.length - 1; i >=0; i --)  {
                 let plane = this.planes[i]
                 const adj_plane_current_index = this.plane_current_index - this.plane_min_index
@@ -274,50 +255,58 @@ class World {
             this.plane_current_index -= 1
             this.setText()
             for (let i = this.planes.length - 1; i >=0; i --) {
+                const adj_plane_current_index = this.plane_current_index - this.plane_min_index
                 let plane = this.planes[i]
-                if (i == this.plane_current_index) {
+                if (i == adj_plane_current_index) {
                     gsap.to(plane.material, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "power4.in",
                         opacity: 1
                     })
                 } else {
                     gsap.to(plane.material, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "power4.in",
                         opacity: 0.3
                     })
                 }
 
                 // position and rotation change
-                if (i > this.plane_current_index) {
+                if (i > adj_plane_current_index) {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "-=10",
                         y: "+=8",
                         z: "-=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "-=0.175",
                         y: "-=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "-=10",
                         y: "-=8",
                         z: "+=8"
                     })
                     // rotation
                     gsap.to(plane.rotation, {
-                        duration: 0.3,
+                        duration: 0.5,
+                        ease: "sine.in",
                         x: "+=0.175",
                         y: "-=0.175"
                     })
                 }
             }
+            // this.updateRenderedPlanes() 
         }
     }
 
