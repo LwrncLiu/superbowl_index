@@ -184,7 +184,7 @@ class World {
                     // position
                     gsap.to(plane.position, {
                         duration: 0.25,
-                        x: "=10",
+                        x: "+=10",
                         y: "+=8",
                         z: "-=8"
                     })
@@ -192,13 +192,13 @@ class World {
                     gsap.to(plane.rotation, {
                         duration: 0.25,
                         x: "-=0.175",
-                        y: "-=0.175"
+                        y: "+=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
                         duration: 0.25,
-                        x: "=10",
+                        x: "+=10",
                         y: "-=8",
                         z: "+=8"
                     })
@@ -206,7 +206,7 @@ class World {
                     gsap.to(plane.rotation, {
                         duration: 0.25,
                         x: "+=0.175",
-                        y: "-=0.175"
+                        y: "+=0.175"
                     })
                 }
             }
@@ -236,7 +236,7 @@ class World {
                     // position
                     gsap.to(plane.position, {
                         duration: 0.25,
-                        x: "+=10",
+                        x: "-=10",
                         y: "+=8",
                         z: "-=8"
                     })
@@ -244,13 +244,13 @@ class World {
                     gsap.to(plane.rotation, {
                         duration: 0.25,
                         x: "-=0.175",
-                        y: "+=0.175"
+                        y: "-=0.175"
                     })
                 } else {
                     // position
                     gsap.to(plane.position, {
                         duration: 0.25,
-                        x: "+=10",
+                        x: "-=10",
                         y: "-=8",
                         z: "+=8"
                     })
@@ -258,7 +258,7 @@ class World {
                     gsap.to(plane.rotation, {
                         duration: 0.25,
                         x: "+=0.175",
-                        y: "+=0.175"
+                        y: "-=0.175"
                     })
                 }
             }
