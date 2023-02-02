@@ -128,7 +128,7 @@ class World {
         }
 
         const loader = new THREE.TextureLoader()
-        const imageTexture = await this.load_image(loader, '../static/' + this.commercials[i].imageLoc)
+        const imageTexture = await this.load_image(loader, '../scripts/' + this.commercials[i].imageLoc.replace('.jpg', '') + '_graph.jpg')
         imageTexture.minFilter = THREE.LinearFilter;
         imageTexture.magFilter = THREE.LinearFilter;
         imageTexture.format = THREE.RGBAFormat;
@@ -171,7 +171,6 @@ class World {
         this.resizeCanvasToDisplaySize()
         requestAnimationFrame(this.animate.bind(this))
         this.renderer.render(this.scene, this.camera)
-        // this.onWindowResize()
     }
 
     resizeCanvasToDisplaySize() {
@@ -179,14 +178,19 @@ class World {
         const canvasWidth = canvasContainer.offsetWidth
         const canvasHeight = canvasContainer.offsetHeight
         const canvas = this.renderer.domElement
-        const width = canvas.clientWidth
-        const height = canvas.clientHeight
+
+        if (canvasWidth <= 500) {
+            this.camera.position.z = 20
+        } else {
+            this.camera.position.z = 12
+        }
 
         if (canvas.width !== canvasWidth || canvas.height !== canvasHeight) {
             this.renderer.setSize(canvasWidth, canvasHeight, false)
             this.camera.aspect = canvasWidth / canvasHeight
             this.camera.updateProjectionMatrix()
         }
+
     }
 
     onClickNext(event) {
