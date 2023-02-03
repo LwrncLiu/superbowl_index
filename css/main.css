@@ -29,15 +29,26 @@ body {
   height: 100vh;
   width: 100vw;
   position: absolute;
-  text-align: center;
-  background-color: rgba(192, 192, 192, 0.8);
+  background-color: rgba(192, 192, 192, 0.95);
   display: none;
   z-index: 1;
 }
 
 .infoText {
   position: absolute;
-  top: 20%;
+  top: 10%;
+  text-align: left;
+}
+
+.infoText h1 {
+  text-align: center;
+}
+
+.infoText p {
+  text-align: left;
+}
+#disclaimer {
+  color: red;
 }
 
 .returnContent {

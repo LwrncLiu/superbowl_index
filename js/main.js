@@ -1,5 +1,4 @@
 import * as THREE from '../node_modules/three/build/three.module.js'
-import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js'
 
 class World {
     constuctor () {
@@ -325,7 +324,7 @@ class World {
 
         document.querySelector("#commercialName").textContent = currentCommercial.commercialName
         document.querySelector('#oneYearReturn').textContent = currentCommercial.ticker+ ': ' + currentCommercial.oneYearReturn
-        document.querySelector("#commentary").textContent = currentCommercial.commentary 
+        document.querySelector("#commentary").textContent = 'Analyst Commentary: "' + currentCommercial.commentary + '"'
     }
 
     movePlaneX() {
