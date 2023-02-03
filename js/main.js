@@ -126,7 +126,7 @@ class World {
         }
 
         const loader = new THREE.TextureLoader()
-        const imageTexture = await this.load_image(loader, './../static/' + this.commercials[i].imageLoc)
+        const imageTexture = await this.load_image(loader, 'https://storage.googleapis.com/superbowl_index_2022_overlays/amazon_alexa_graph.jpg') // './../static/' + this.commercials[i].imageLoc)
         imageTexture.minFilter = THREE.LinearFilter;
         imageTexture.magFilter = THREE.LinearFilter;
         imageTexture.format = THREE.RGBAFormat;
