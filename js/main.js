@@ -26,6 +26,7 @@ class World {
         this.plane_min_index = 0
         this.plane_max_index = 4
         this.commercials = await this.getCommercials()
+        this.commercialReturns = await this.getCommercialReturns()
         this.spawnInitialPlanes()
         this.setText()
 
@@ -318,14 +319,27 @@ class World {
         return data.commercials
     }
 
+    async getCommercialReturns() {
+        let returns = []
+        for (let i = 0; i < this.commercials.length; i++ ){
+            returns.push(this.commercials[i].oneYearReturn)
+        }
+        return returns
+    }
+
     setText() {
         const currentCommercial = this.commercials[this.plane_current_index]
+        const portfolioAmount = this.commercialReturns.slice(0, this.plane_current_index + 1).reduce((a, b) => a + b, 0)
+        const currentReturn = portfolioAmount - (100 * (this.plane_current_index + 1))
 
-
-        document.querySelector('#cumulativeReturn').textContent = 'Cumulative Return: ' + 10
+        document.querySelector('#cumulativeReturn').textContent = 'Cumulative Return: $' + currentReturn
         document.querySelector("#commercialName").textContent = currentCommercial.commercialName
-        document.querySelector('#oneYearReturn').textContent = currentCommercial.ticker+ ': ' + currentCommercial.oneYearReturn
+        document.querySelector('#oneYearReturn').textContent = currentCommercial.ticker+ ': $' + currentCommercial.oneYearReturn
         document.querySelector("#commentary").textContent = 'Analyst Commentary: "' + currentCommercial.commentary + '"'
+    }
+
+    calculateCumulativeReturn() {
+
     }
 
     movePlaneX() {
