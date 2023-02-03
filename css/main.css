@@ -2,7 +2,7 @@ body {
   margin: 0px;
   height: 100vh;
   overscroll-behavior: none;
-  background-color: white;
+  background-color: #daedcb;
   font-family: 'Roboto Mono', monospace;
 
 }
@@ -26,15 +26,18 @@ body {
 }
 
 .infoContent {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   position: absolute;
   background-color: rgba(192, 192, 192, 0.95);
   display: none;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .infoText {
+  width: 80%;
+  left: 10%;
   position: absolute;
   top: 10%;
   text-align: left;
