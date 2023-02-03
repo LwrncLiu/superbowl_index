@@ -4,5 +4,11 @@
       "method": ["GET"],
       "responseHeader": ["Content-Type"],
       "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["https://lwrncliu.com/"],
+      "method": ["GET"],
+      "responseHeader": ["Content-Type"],
+      "maxAgeSeconds": 3600
     }
 ]
