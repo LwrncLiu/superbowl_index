@@ -8,7 +8,6 @@ class World {
         // THREEJS INIT
         // scene 
         this.scene = new THREE.Scene()
-        // this.scene.background = new THREE.Color(0x6e9b8e)
 
         // render
         this.renderer = new THREE.WebGLRenderer( {
@@ -127,7 +126,7 @@ class World {
         }
 
         const loader = new THREE.TextureLoader()
-        const imageTexture = await this.load_image(loader, '../scripts/' + this.commercials[i].imageLoc.replace('.jpg', '') + '_graph.jpg')
+        const imageTexture = await this.load_image(loader, './../static/' + this.commercials[i].imageLoc)
         imageTexture.minFilter = THREE.LinearFilter;
         imageTexture.magFilter = THREE.LinearFilter;
         imageTexture.format = THREE.RGBAFormat;
@@ -314,7 +313,7 @@ class World {
     }
 
     async getCommercials() {
-        const response = await fetch('../static/commercials.json')
+        const response = await fetch('./../static/commercials.json')
         const data = await response.json()
         return data.commercials
     }
