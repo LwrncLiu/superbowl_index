@@ -175,7 +175,7 @@ class World {
     resizeCanvasToDisplaySize() {
         const canvasContainer = document.querySelector('.canvasContainer')
         const canvasWidth = canvasContainer.offsetWidth
-        const canvasHeight = canvasContainer.offsetHeight
+        let canvasHeight = canvasContainer.offsetHeight
         const canvas = this.renderer.domElement
 
         if (canvasWidth <= 500) {
