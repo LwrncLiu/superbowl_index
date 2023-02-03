@@ -30,7 +30,7 @@ body {
   width: 100%;
   position: absolute;
   background-color: rgba(192, 192, 192, 0.95);
-  display: none;
+  /* display: none; */
   z-index: 1;
   overflow-x: hidden;
 }
@@ -70,6 +70,10 @@ body {
   text-align: center;
   margin-left: 2rem;
   margin-right: 2rem;
+}
+
+.textContent h4 {
+  margin:0;
 }
 
 #commercialName {
