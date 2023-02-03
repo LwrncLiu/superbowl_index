@@ -7,6 +7,39 @@ body {
 
 }
 
+#infoIcon {
+  position: absolute;
+  height: 35px;
+  left: 0;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+#closeIcon {
+  position: absolute;
+  height: 30px;
+  right: 0;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  z-index: 3;
+
+}
+
+.infoContent {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  text-align: center;
+  background-color: rgba(192, 192, 192, 0.8);
+  display: none;
+  z-index: 1;
+}
+
+.infoText {
+  position: absolute;
+  top: 20%;
+}
+
 .returnContent {
   position: absolute;
   margin-right: 1rem;
@@ -34,12 +67,13 @@ body {
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 0;
 }
 
 p {
   text-decoration: none;
   display: inline-block;
-  padding: 8px 16px;
+  padding: 18px 25px;
   margin-bottom: 0;
 }
   
