@@ -321,6 +321,8 @@ class World {
     setText() {
         const currentCommercial = this.commercials[this.plane_current_index]
 
+
+        document.querySelector('#cumulativeReturn').textContent = 'Cumulative Return: ' + 10
         document.querySelector("#commercialName").textContent = currentCommercial.commercialName
         document.querySelector('#oneYearReturn').textContent = currentCommercial.ticker+ ': ' + currentCommercial.oneYearReturn
         document.querySelector("#commentary").textContent = 'Analyst Commentary: "' + currentCommercial.commentary + '"'
