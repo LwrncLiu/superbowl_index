@@ -128,9 +128,10 @@ class World {
 
         const loader = new THREE.TextureLoader()
         const imageTexture = await this.load_image(loader, 'https://storage.googleapis.com/superbowl_index_2022_overlays/' + this.commercials[i].imageLoc.replace('.jpg', '') + '_graph.jpg') // './../static/' + this.commercials[i].imageLoc)
-        imageTexture.minFilter = THREE.NearestFilter;
-        imageTexture.magFilter = THREE.NearestFilter;
+        imageTexture.minFilter = THREE.LinearFilter;
+        imageTexture.magFilter = THREE.LinearFilter;
         imageTexture.format = THREE.RGBAFormat;
+        // imageTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy()
         
         const material = new THREE.MeshBasicMaterial( { map: imageTexture, wireframe: false } );
         const geometry = new THREE.BufferGeometry( );
@@ -179,14 +180,15 @@ class World {
         let canvasHeight = canvasContainer.offsetHeight
         const canvas = this.renderer.domElement
 
-        // if (canvasWidth <= 500) {
-        //     this.camera.position.z = 15
-        // } else {
-        //     this.camera.position.z = 12
-        // }
+        if (canvasWidth <= 500) {
+            this.camera.position.z = 14
+        } else {
+            this.camera.position.z = 12
+        }
 
         if (canvas.width !== canvasWidth || canvas.height !== canvasHeight) {
             this.renderer.setSize(canvasWidth, canvasHeight, false)
+            this.renderer.setPixelRatio(1)
             this.camera.aspect = canvasWidth / canvasHeight
             this.camera.updateProjectionMatrix()
         }
