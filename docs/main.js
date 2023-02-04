@@ -128,12 +128,11 @@ class World {
 
         const loader = new THREE.TextureLoader()
         const imageTexture = await this.load_image(loader, 'https://storage.googleapis.com/superbowl_index_2022_overlays/' + this.commercials[i].imageLoc.replace('.jpg', '') + '_graph.jpg') // './../static/' + this.commercials[i].imageLoc)
-        imageTexture.minFilter = THREE.LinearFilter;
-        imageTexture.magFilter = THREE.LinearFilter;
+        imageTexture.minFilter = THREE.NearestFilter;
+        imageTexture.magFilter = THREE.NearestFilter;
         imageTexture.format = THREE.RGBAFormat;
         
         const material = new THREE.MeshBasicMaterial( { map: imageTexture, wireframe: false } );
-        
         const geometry = new THREE.BufferGeometry( );
         geometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array( positions ), 3 ) );
         geometry.setAttribute( 'uv', new THREE.BufferAttribute( new Float32Array( uvs ), 2 ) );
@@ -163,7 +162,7 @@ class World {
 
     async load_image(loader, path) {
         const texture = await loader.loadAsync( path )
-        texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
+        // texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
 
         return texture
     }
@@ -180,11 +179,11 @@ class World {
         let canvasHeight = canvasContainer.offsetHeight
         const canvas = this.renderer.domElement
 
-        if (canvasWidth <= 500) {
-            this.camera.position.z = 20
-        } else {
-            this.camera.position.z = 12
-        }
+        // if (canvasWidth <= 500) {
+        //     this.camera.position.z = 15
+        // } else {
+        //     this.camera.position.z = 12
+        // }
 
         if (canvas.width !== canvasWidth || canvas.height !== canvasHeight) {
             this.renderer.setSize(canvasWidth, canvasHeight, false)
@@ -337,7 +336,7 @@ class World {
         document.querySelector('#cumulativeReturn').textContent = 'Cumulative Return: $' + currentReturn
         document.querySelector("#commercialName").textContent = currentCommercial.commercialName
         document.querySelector('#oneYearReturn').textContent = currentCommercial.ticker+ ': $' + currentCommercial.oneYearReturn
-        document.querySelector("#commentary").textContent = 'Analyst Commentary: "' + currentCommercial.commentary + '"'
+        document.querySelector("#commentary").textContent = 'Analyst: "' + currentCommercial.commentary + '"'
     }
 
     calculateCumulativeReturn() {
