@@ -13,7 +13,7 @@ class World {
         this.renderer = new THREE.WebGLRenderer( {
             antialias: true, 
             canvas: document.querySelector('canvas'),
-            alpha: true 
+            alpha: true
         })
 
         // camera
@@ -163,6 +163,8 @@ class World {
 
     async load_image(loader, path) {
         const texture = await loader.loadAsync( path )
+        texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
+
         return texture
     }
 
