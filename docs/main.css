@@ -67,15 +67,15 @@ body {
   
   .textContent {
     left: 50%;
-    text-align: center;
     margin-left: 2rem;
     margin-right: 2rem;
+    text-align: center;
   }
   
   .textContent h4 {
     margin:0;
   }
-  
+
   #commercialName {
     margin-top: 0;
   }
